@@ -1,4 +1,4 @@
-# renku-project-template
+# DNF renku-project-template
 
 A repository of base templates for new Renku projects. The next sections outline
 what different files in the template are used for.
