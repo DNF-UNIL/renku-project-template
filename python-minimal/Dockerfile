@@ -19,6 +19,8 @@ FROM ${RENKU_BASE_IMAGE}
 
 # install the python dependencies
 COPY requirements.txt environment.yml /tmp/
+COPY notebooks /home/jovyan/notebooks
+
 RUN conda env update -q -f /tmp/environment.yml && \
     /opt/conda/bin/pip install -r /tmp/requirements.txt && \
     conda clean -y --all && \
@@ -27,7 +29,9 @@ RUN conda env update -q -f /tmp/environment.yml && \
 # RENKU_VERSION determines the version of the renku CLI
 # that will be used in this image. To find the latest version,
 # visit https://pypi.org/project/renku/#history.
-ARG RENKU_VERSION={{ __renku_version__ | default("1.6.0") }}
+# {{ __renku_version__ | default("1.6.0") }}
+
+ARG RENKU_VERSION="1.8.0"
 
 ########################################################
 # Do not edit this section and do not add anything below
